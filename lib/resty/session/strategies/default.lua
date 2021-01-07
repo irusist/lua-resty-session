@@ -8,6 +8,7 @@ function default:save(close)
   local i, e, s = self.id, self.expires, self.storage
   ngx.log(ngx.ERR, "self.id: ", self.id)
   ngx.log(ngx.ERR, "self.expires: ", self.expires)
+  ngx.log(ngx.ERR, "self.secret: ", self.secret)
   local k = self.hmac(self.secret, i .. e)
   local d = self.serializer.serialize(self.data)
   local h = self.hmac(k, concat{ i, e, d, self.key })
